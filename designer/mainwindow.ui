@@ -1242,6 +1242,40 @@
                    </widget>
                   </item>
                  </layout>
+                 <zorder>dl_cursor_btn</zorder>
+                 <zorder>label_10</zorder>
+                 <zorder>label_12</zorder>
+                 <zorder>dl_savgol_ord</zorder>
+                 <zorder>dl_yoffset_sb</zorder>
+                 <zorder>dl_color_label</zorder>
+                 <zorder>label_16</zorder>
+                 <zorder>dl_marker_cb</zorder>
+                 <zorder>label_5</zorder>
+                 <zorder>label_7</zorder>
+                 <zorder>label_23</zorder>
+                 <zorder>dl_linewidth_sb</zorder>
+                 <zorder>label_15</zorder>
+                 <zorder>dl_xscale_sb</zorder>
+                 <zorder>dl_style_cb</zorder>
+                 <zorder>dl_ydata_cb</zorder>
+                 <zorder>dl_remove_btn</zorder>
+                 <zorder>label_22</zorder>
+                 <zorder>label_9</zorder>
+                 <zorder>dl_xdata_cb</zorder>
+                 <zorder>label_11</zorder>
+                 <zorder>dl_xoffset_sb</zorder>
+                 <zorder>label_6</zorder>
+                 <zorder>dl_name_edit</zorder>
+                 <zorder>label</zorder>
+                 <zorder>dl_markersize_sb</zorder>
+                 <zorder>label_8</zorder>
+                 <zorder>dl_savgol_wlen</zorder>
+                 <zorder>label_2</zorder>
+                 <zorder>dl_yscale_sb</zorder>
+                 <zorder>label_4</zorder>
+                 <zorder>dl_render_cb</zorder>
+                 <zorder>dl_transform_cb</zorder>
+                 <zorder>dl_hide_btn</zorder>
                 </widget>
                </item>
               </layout>
@@ -1347,8 +1381,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>310</height>
+                <width>215</width>
+                <height>331</height>
                </rect>
               </property>
               <property name="sizePolicy">
@@ -1736,7 +1770,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>98</width>
+                   <width>178</width>
                    <height>431</height>
                   </rect>
                  </property>

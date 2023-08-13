@@ -14,6 +14,7 @@ from src.widgets.case_window import CaseDialog
 from src.widgets.zp_window import ZPWindow
 from src.widgets.response_dialog import ResponseDialog
 from src.widgets.prompt_dialog import PromptDialog
+from matplotlib.widgets import Cursor
 
 from scipy.signal import savgol_filter
 import scipy.signal as signal
@@ -63,6 +64,9 @@ def stage_to_str(stage):
     stage_str+= str(stage.k)
     return stage_str
 
+def closestNumber(x, x_cursor):
+        return min(x, key=lambda k: abs(k - x_cursor))
+
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
@@ -105,6 +109,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_savgol_wlen.valueChanged.connect(self.updateSelectedDataline)
         self.dl_savgol_ord.valueChanged.connect(self.updateSelectedDataline)
         self.dl_hide_btn.clicked.connect(self.hideFunction)
+        self.dl_cursor_btn.clicked.connect(self.createCursor)
 
         self.dl_color_pickerbtn.clicked.connect(self.openColorPicker)
 
@@ -138,6 +143,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             [ self.plot_4_1, self.plot_4_2 ],
             [ self.plot_5 ],
         ]
+
+        #Cursores
+        self.cursor1 = Cursor(self.plot_1.canvas.ax, useblit=True, horizOn=False, vertOn=False, color='red', linewidth=0.6, linestyle='dashed')
+        self.cursor1.connect_event('motion_notify_event', self.on_move)
+        self.cursor1_hline, = self.plot_1.canvas.ax.plot([],[], linestyle='dashed', color='r', linewidth=0.6)
+        self.cursor1_vline, = self.plot_1.canvas.ax.plot([],[], linestyle='dashed', color='r', linewidth=0.6)
+        self.cursor1 = None
+        self.cursor1_left = 2
+        self.cursor1_coords = [0, 0]
+        self.cursores1 = [[0, 0], [0, 0]]  
 
         self.new_filter_btn.clicked.connect(self.addFilter)
         self.chg_filter_btn.clicked.connect(self.changeSelectedFilter)
@@ -846,6 +861,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.selected_dataline_data.alpha = 0
         self.updatePlots()
+
+    def createCursor(self): 
+        if self.cursor1_left==2:
+            # TODO llamar a funcion cursorClick
+            self.cursor1_left = 1
+        elif self.cursor1_left==1:
+            # TODO llamar a funcion cursorClick
+            self.cursor1_left = 0     
+    
+    def on_move(self, event):
+        if event.inaxes == self.plot_1.canvas.ax and self.cursor1_left<2:
+            x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
+                                                             self.selected_dataline_data.ysource,
+                                                             self.selected_dataline_data.casenum)
+            self.cursor1_coords[0] = event.xdata
+            self.cursor1_coords[1] = y[int(np.where(x == closestNumber(x, event.xdata))[0])]
+            self.updateCursor(x, y)
+
+    def updateCursor(self, x, y):
+        #print('chau cursor')
+        self.cursor1_hline.set_data([],[])
+        self.cursor1_vline.set_data([],[])
+        #plt.draw()
+        #print('hola cursor')
+        self.cursor1_hline.set_data(x, np.full(len(x), self.cursor1_coords[1]))
+        self.cursor1_vline.set_data(np.full(len(y), self.cursor1_coords[0]), y)  
+        #plt.draw()
+
+        #TODO Basicamente creo que esta "implementado" el cursor. Pero no puedo hacer funcionar plt.draw()
 
     def setDatasetControlsStatus(self, enabled=True):
         self.ds_title_edit.setEnabled(enabled)
