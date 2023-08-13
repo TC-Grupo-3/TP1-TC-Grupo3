@@ -145,7 +145,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ]
 
         #Cursores
-        self.cursor1 = Cursor(self.plot_1.canvas.ax, useblit=True, horizOn=False, vertOn=False, color='red', linewidth=0.6, linestyle='dashed')
+        self.cursor1 = Cursor(self.plot_1.canvas.ax, useblit=True, horizOn=True, vertOn=True, color='red', linewidth=0.6, linestyle='dashed')
         self.cursor1.connect_event('motion_notify_event', self.on_move)
         self.cursor1_hline, = self.plot_1.canvas.ax.plot([],[], linestyle='dashed', color='r', linewidth=0.6)
         self.cursor1_vline, = self.plot_1.canvas.ax.plot([],[], linestyle='dashed', color='r', linewidth=0.6)
@@ -754,7 +754,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if(self.selected_dataset_data.type == 'filter'):
             self.populateSelectedFilterDetails()
 
-    
     def populateSelectedFilterDetails(self, index=-2):
         pass
 
@@ -864,32 +863,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def createCursor(self): 
         if self.cursor1_left==2:
+            dl_canvas = self.getPlotFromIndex(self.selected_dataline_data.plots).canvas
+            dl_canvas.mpl_connect('button_press_event', self.onClick)
             # TODO llamar a funcion cursorClick
             self.cursor1_left = 1
         elif self.cursor1_left==1:
             # TODO llamar a funcion cursorClick
-            self.cursor1_left = 0     
+            self.cursor1_left = 0
+
+            #TODO ver wue pasa con este flag cuando se cambia de pestaña   
+
+    def onClick(self, event):
+        self.updatePlots()
+        #if event.inaxes == ax:
+        #    x, y = event.xdata, event.ydata  
     
     def on_move(self, event):
-        if event.inaxes == self.plot_1.canvas.ax and self.cursor1_left<2:
-            x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
-                                                             self.selected_dataline_data.ysource,
-                                                             self.selected_dataline_data.casenum)
-            self.cursor1_coords[0] = event.xdata
-            self.cursor1_coords[1] = y[int(np.where(x == closestNumber(x, event.xdata))[0])]
-            self.updateCursor(x, y)
+        if self.cursor1_left<2:
+            dl_canvas = self.getPlotFromIndex(self.selected_dataline_data.plots).canvas
+            if event.inaxes == dl_canvas.ax:
+                x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
+                                                                self.selected_dataline_data.ysource,
+                                                                self.selected_dataline_data.casenum)
+                self.cursor1_coords[0] = event.xdata
+                self.cursor1_coords[1] = y[int(np.where(x == closestNumber(x, event.xdata))[0])]
 
-    def updateCursor(self, x, y):
-        #print('chau cursor')
+    def updateCursor(self, x, y, canvas):
         self.cursor1_hline.set_data([],[])
         self.cursor1_vline.set_data([],[])
-        #plt.draw()
-        #print('hola cursor')
+        canvas.draw()
         self.cursor1_hline.set_data(x, np.full(len(x), self.cursor1_coords[1]))
         self.cursor1_vline.set_data(np.full(len(y), self.cursor1_coords[0]), y)  
-        #plt.draw()
-
-        #TODO Basicamente creo que esta "implementado" el cursor. Pero no puedo hacer funcionar plt.draw()
+        canvas.draw()
 
     def setDatasetControlsStatus(self, enabled=True):
         self.ds_title_edit.setEnabled(enabled)
@@ -960,6 +965,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         canvas.ax.title.set_size(self.plt_titlesize_sb.value())
 
                         x, y = ds.get_datapoints(dl.xsource, dl.ysource, dl.casenum)
+
+                        if self.cursor1_left<2:
+                            self.updateCursor(x, y, dl_canvas)
 
                         if(dl.transform == 1):
                             y = np.abs(y)
