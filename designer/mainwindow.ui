@@ -106,9 +106,9 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-165</y>
-                <width>197</width>
-                <height>446</height>
+                <y>0</y>
+                <width>193</width>
+                <height>451</height>
                </rect>
               </property>
               <property name="sizePolicy">
@@ -670,9 +670,9 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-167</y>
-                <width>204</width>
-                <height>506</height>
+                <y>-209</y>
+                <width>200</width>
+                <height>550</height>
                </rect>
               </property>
               <property name="sizePolicy">
@@ -708,19 +708,324 @@
                  <property name="title">
                   <string>Selected dataline details</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0">
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_10">
+                 <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0">
+                  <item row="23" column="0" colspan="2">
+                   <widget class="QPushButton" name="dl_hide_btn">
                     <property name="text">
-                     <string>Render</string>
+                     <string>Hide / Show</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="20" column="0">
-                   <widget class="QLabel" name="label_12">
-                    <property name="text">
-                     <string>Sav-Gol ord</string>
+                  <item row="6" column="1">
+                   <widget class="ScienDSpinBox" name="dl_xscale_sb">
+                    <property name="value">
+                     <double>1.000000000000000</double>
                     </property>
+                   </widget>
+                  </item>
+                  <item row="15" column="1">
+                   <widget class="QDoubleSpinBox" name="dl_linewidth_sb">
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.100000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.100000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="14" column="1">
+                   <widget class="QComboBox" name="dl_style_cb">
+                    <property name="currentText">
+                     <string>None</string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>None</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Solid</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dashed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dash-dot</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dotted</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="QComboBox" name="dl_ydata_cb"/>
+                  </item>
+                  <item row="17" column="0">
+                   <widget class="QLabel" name="label_15">
+                    <property name="text">
+                     <string>Dot size</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_22">
+                    <property name="text">
+                     <string>Transform</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QComboBox" name="dl_xdata_cb"/>
+                  </item>
+                  <item row="18" column="1">
+                   <spacer name="verticalSpacer_4">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="24" column="0" colspan="2">
+                   <widget class="QPushButton" name="dl_remove_btn">
+                    <property name="text">
+                     <string>Remove</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="16" column="0">
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>Dot style</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="ScienDSpinBox" name="dl_xoffset_sb">
+                    <property name="value">
+                     <double>0.000000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="1">
+                   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetNoConstraint</enum>
+                    </property>
+                    <item>
+                     <widget class="QLineEdit" name="dl_color_edit">
+                      <property name="text">
+                       <string>#151515</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="dl_color_pickerbtn">
+                      <property name="text">
+                       <string>Pick</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="2" column="1">
+                   <spacer name="verticalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="15" column="0">
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>Line width</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="0">
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Y scale</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label">
+                    <property name="text">
+                     <string>X data</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="14" column="0">
+                   <widget class="QLabel" name="label_8">
+                    <property name="text">
+                     <string>Line style</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="17" column="1">
+                   <widget class="QDoubleSpinBox" name="dl_markersize_sb">
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.100000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>20.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.100000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="dl_name_edit"/>
+                  </item>
+                  <item row="11" column="1">
+                   <spacer name="verticalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>Name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>Y data</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="1">
+                   <widget class="ScienDSpinBox" name="dl_yscale_sb">
+                    <property name="value">
+                     <double>1.000000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="19" column="1">
+                   <widget class="QDoubleSpinBox" name="dl_savgol_wlen">
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::NoButtons</enum>
+                    </property>
+                    <property name="decimals">
+                     <number>0</number>
+                    </property>
+                    <property name="value">
+                     <double>1.000000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QComboBox" name="dl_transform_cb">
+                    <item>
+                     <property name="text">
+                      <string>None</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>|.|</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Arg(.)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>unwrap Arg(.)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>20log(.)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>20log(|.|)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>unwrap(.)</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QComboBox" name="dl_render_cb">
+                    <item>
+                     <property name="text">
+                      <string>Plot 1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Plot 2.1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Plot 2.2</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Plot 3</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Plot 4.1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Plot 4.2</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Plot 5</string>
+                     </property>
+                    </item>
                    </widget>
                   </item>
                   <item row="20" column="1">
@@ -733,6 +1038,20 @@
                     </property>
                     <property name="value">
                      <double>1.000000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_10">
+                    <property name="text">
+                     <string>Render</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="20" column="0">
+                   <widget class="QLabel" name="label_12">
+                    <property name="text">
+                     <string>Sav-Gol ord</string>
                     </property>
                    </widget>
                   </item>
@@ -750,10 +1069,24 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="7" column="0">
-                   <widget class="QLabel" name="label_16">
+                  <item row="6" column="0">
+                   <widget class="QLabel" name="label_5">
                     <property name="text">
-                     <string>X offset</string>
+                     <string>X scale</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="19" column="0">
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>Sav-Gol wlen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="0">
+                   <widget class="QLabel" name="label_23">
+                    <property name="text">
+                     <string>Y offset</string>
                     </property>
                    </widget>
                   </item>
@@ -894,343 +1227,17 @@
                     </item>
                    </widget>
                   </item>
-                  <item row="6" column="0">
-                   <widget class="QLabel" name="label_5">
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="label_16">
                     <property name="text">
-                     <string>X scale</string>
+                     <string>X offset</string>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="19" column="0">
-                   <widget class="QLabel" name="label_7">
-                    <property name="text">
-                     <string>Sav-Gol wlen</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="10" column="0">
-                   <widget class="QLabel" name="label_23">
-                    <property name="text">
-                     <string>Y offset</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="15" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_linewidth_sb">
-                    <property name="decimals">
-                     <number>1</number>
-                    </property>
-                    <property name="minimum">
-                     <double>0.100000000000000</double>
-                    </property>
-                    <property name="singleStep">
-                     <double>0.100000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="17" column="0">
-                   <widget class="QLabel" name="label_15">
-                    <property name="text">
-                     <string>Dot size</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="1">
-                   <widget class="ScienDSpinBox" name="dl_xscale_sb">
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="14" column="1">
-                   <widget class="QComboBox" name="dl_style_cb">
-                    <property name="currentText">
-                     <string>None</string>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>None</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Solid</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Dashed</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Dash-dot</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Dotted</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="8" column="1">
-                   <widget class="QComboBox" name="dl_ydata_cb"/>
-                  </item>
-                  <item row="23" column="0" colspan="2">
-                   <widget class="QPushButton" name="dl_remove_btn">
-                    <property name="text">
-                     <string>Remove</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_22">
-                    <property name="text">
-                     <string>Transform</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="18" column="1">
-                   <spacer name="verticalSpacer_4">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="16" column="0">
-                   <widget class="QLabel" name="label_9">
-                    <property name="text">
-                     <string>Dot style</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1">
-                   <widget class="QComboBox" name="dl_xdata_cb"/>
-                  </item>
-                  <item row="12" column="1">
-                   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
-                    <property name="sizeConstraint">
-                     <enum>QLayout::SetNoConstraint</enum>
-                    </property>
-                    <item>
-                     <widget class="QLineEdit" name="dl_color_edit">
-                      <property name="text">
-                       <string>#151515</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QToolButton" name="dl_color_pickerbtn">
-                      <property name="text">
-                       <string>Pick</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="2" column="1">
-                   <spacer name="verticalSpacer">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="15" column="0">
-                   <widget class="QLabel" name="label_11">
-                    <property name="text">
-                     <string>Line width</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="1">
-                   <widget class="ScienDSpinBox" name="dl_xoffset_sb">
-                    <property name="value">
-                     <double>0.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="9" column="0">
-                   <widget class="QLabel" name="label_6">
-                    <property name="text">
-                     <string>Y scale</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QLineEdit" name="dl_name_edit"/>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QLabel" name="label">
-                    <property name="text">
-                     <string>X data</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="17" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_markersize_sb">
-                    <property name="decimals">
-                     <number>1</number>
-                    </property>
-                    <property name="minimum">
-                     <double>0.100000000000000</double>
-                    </property>
-                    <property name="maximum">
-                     <double>20.000000000000000</double>
-                    </property>
-                    <property name="singleStep">
-                     <double>0.100000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="14" column="0">
-                   <widget class="QLabel" name="label_8">
-                    <property name="text">
-                     <string>Line style</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="19" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_savgol_wlen">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::NoButtons</enum>
-                    </property>
-                    <property name="decimals">
-                     <number>0</number>
-                    </property>
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="0">
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>Y data</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="9" column="1">
-                   <widget class="ScienDSpinBox" name="dl_yscale_sb">
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="11" column="1">
-                   <spacer name="verticalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_4">
-                    <property name="text">
-                     <string>Name</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QComboBox" name="dl_render_cb">
-                    <item>
-                     <property name="text">
-                      <string>Plot 1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 2.1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 2.2</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 3</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 4.1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 4.2</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 5</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QComboBox" name="dl_transform_cb">
-                    <item>
-                     <property name="text">
-                      <string>None</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>|.|</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Arg(.)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>unwrap Arg(.)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>20log(.)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>20log(|.|)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>unwrap(.)</string>
-                     </property>
-                    </item>
                    </widget>
                   </item>
                   <item row="22" column="0" colspan="2">
-                   <widget class="QPushButton" name="dl_hide_btn">
+                   <widget class="QPushButton" name="dl_cursor_btn">
                     <property name="text">
-                     <string>Hide / Show</string>
+                     <string>Cursor</string>
                     </property>
                    </widget>
                   </item>
@@ -1340,8 +1347,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>215</width>
-                <height>329</height>
+                <width>98</width>
+                <height>310</height>
                </rect>
               </property>
               <property name="sizePolicy">
@@ -1729,8 +1736,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>182</width>
-                   <height>416</height>
+                   <width>98</width>
+                   <height>431</height>
                   </rect>
                  </property>
                  <property name="sizePolicy">
@@ -2495,7 +2502,7 @@
      <x>0</x>
      <y>0</y>
      <width>1061</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuProject">
