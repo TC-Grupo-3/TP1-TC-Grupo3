@@ -597,7 +597,7 @@ class Ui_MainWindow(object):
         self.dl_relevant_t.setMaximumSize(QtCore.QSize(160, 16777215))
         self.dl_relevant_t.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.dl_relevant_t.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.dl_relevant_t.setRowCount(4)
+        self.dl_relevant_t.setRowCount(8)
         self.dl_relevant_t.setColumnCount(2)
         self.dl_relevant_t.setObjectName("dl_relevant_t")
         self.dl_relevant_t.horizontalHeader().setVisible(False)

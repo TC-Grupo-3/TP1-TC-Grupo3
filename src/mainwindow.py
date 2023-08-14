@@ -52,6 +52,9 @@ W_TO_F = 1/F_TO_W
 SING_B_TO_F = W_TO_F if SHOW_PZ_IN_HZ else 1
 SING_F_TO_B = F_TO_W if SHOW_PZ_IN_HZ else 1
 
+xc1Row, yc1Row, xc2Row, yc2Row, ysubsRow, xsubsRow, xinvRow = {0,1,2,3,4,5,6}
+cursorName, cursorValue = {0,1}
+
 def stage_to_str(stage):
     stage_str = 'Z={'
     for z in stage.z:
@@ -188,11 +191,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.dl_relevant_t.horizontalHeader().hide()
         # self.dl_relevant_t.verticalHeader().hide()
         #self.dl_relevant_t.setEditTriggers(QTableWidget.NoEditTriggers)
-        self.dl_relevant_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        item = QTableWidgetItem('hola')
-        item2 = QTableWidgetItem('hola')
-        self.dl_relevant_t.setItem(1,1,item)
-        self.dl_relevant_t.setItem(0,0,item2)
+        # self.dl_relevant_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.initRelevantTable()
+
 
     def addDataset(self, ds):
         qlwt = QListWidgetItem()
@@ -202,6 +203,43 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.datasets.append(ds)
         self.datalines.append([])
         self.dataset_list.setCurrentRow(self.dataset_list.count() - 1)
+
+    
+
+    #para cambiar el valor de una celda se le debe dar un valor al item que contiene esa celda, y llamar a setItem para que sobreescriba
+    def initRelevantTable(self): 
+        self.dl_relevant_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.dl_relevant_t.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+    #    self.dl_relevant_t.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+    #    self.dl_relevant_t.horizontalHeader().setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        self.XC1 = QTableWidgetItem('X C1')
+        self.YC1 = QTableWidgetItem('Y C1')
+        self.XC2 = QTableWidgetItem('X C2')
+        self.YC2 = QTableWidgetItem('Y C2')
+        self.Xsubs = QTableWidgetItem('T')
+        self.Ysubs = QTableWidgetItem('A')
+        self.Xinv = QTableWidgetItem('1/T')
+        self.XC1_value = QTableWidgetItem('0')
+        self.YC1_value = QTableWidgetItem('0')
+        self.XC2_value = QTableWidgetItem('0')
+        self.YC2_value = QTableWidgetItem('0')
+        self.Xsubs_value = QTableWidgetItem('0')
+        self.Ysubs_value = QTableWidgetItem('0')
+        self.Xinv_value = QTableWidgetItem('0')
+        self.dl_relevant_t.setItem(xc1Row,cursorName, self.XC1)
+        self.dl_relevant_t.setItem(yc1Row,cursorName, self.YC1)
+        self.dl_relevant_t.setItem(xc2Row,cursorName, self.XC2)
+        self.dl_relevant_t.setItem(yc2Row,cursorName, self.YC2)
+        self.dl_relevant_t.setItem(ysubsRow,cursorName, self.Ysubs)
+        self.dl_relevant_t.setItem(xsubsRow,cursorName, self.Xsubs)
+        self.dl_relevant_t.setItem(xinvRow,cursorName, self.Xinv)
+        self.dl_relevant_t.setItem(xc1Row,cursorValue, self.XC1_value)
+        self.dl_relevant_t.setItem(yc1Row,cursorValue, self.YC1_value)
+        self.dl_relevant_t.setItem(xc2Row,cursorValue, self.XC2_value)
+        self.dl_relevant_t.setItem(yc2Row,cursorValue, self.YC2_value)
+        self.dl_relevant_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
+        self.dl_relevant_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
+        self.dl_relevant_t.setItem(xinvRow,cursorValue, self.Xinv_value)
 
     def removeDataset(self, i):
         #Saco los datalines
@@ -877,7 +915,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             dl_canvas.mpl_connect('button_press_event', self.onClick)
 
             #TODO ver que pasa con este flag cuando se cambia de pestaña  
-            
+
+    def updateRelevant(self):
+        self.XC1_value = QTableWidgetItem(str('%.6f'%(self.cursores1[0][0])))
+        self.YC1_value = QTableWidgetItem(str('%.6f'%(self.cursores1[0][1])))
+        self.XC2_value = QTableWidgetItem(str('%.6f'%(self.cursores1[1][0])))
+        self.YC2_value = QTableWidgetItem(str('%.6f'%(self.cursores1[1][1])))
+        self.Ysubs_value = QTableWidgetItem(str('%.6f'%(self.cursores1[1][1] - self.cursores1[0][1])))
+        self.Xsubs_value = QTableWidgetItem(str('%.6f'%(self.cursores1[1][0] - self.cursores1[0][0])))
+        if self.Xsubs_value != 0:
+            self.Xinv_value = QTableWidgetItem(str('%.6f'%(1/(self.cursores1[1][0] - self.cursores1[0][0]))))
+        else:
+            self.Xinv_value = QTableWidgetItem('inf')
+        self.dl_relevant_t.setItem(xc1Row,cursorValue, self.XC1_value)
+        self.dl_relevant_t.setItem(yc1Row,cursorValue, self.YC1_value)
+        self.dl_relevant_t.setItem(xc2Row,cursorValue, self.XC2_value)
+        self.dl_relevant_t.setItem(yc2Row,cursorValue, self.YC2_value)
+        self.dl_relevant_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
+        self.dl_relevant_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
+        self.dl_relevant_t.setItem(xinvRow, cursorValue, self.Xinv_value)
+
     def onClick(self, event):
         if(self.dl_cursor_cb.currentText() != 'None'):
             x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
@@ -892,6 +949,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     #print(self.dl_cursor_cb.currentText())
                 elif self.dl_cursor_cb.currentText() == 'Cursor 2' and self.dl_cursor_cb.currentText() != 'Cursor 1':
                     self.cursores1[1] = [self.cursor1_coords[0], self.cursor1_coords[1]]
+                    
                     # print(self.dl_cursor_cb.currentText())
             print('Cursor 1:')
             print('x = ', self.cursores1[0][0])
@@ -899,9 +957,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print('Cursor 2:')
             print('x = ', self.cursores1[1][0])
             print('y = ', self.cursores1[1][1])
+            self.updateRelevant()
             self.updatePlots()
-
-            #Creo que aca iría el llamado a un updateTable()
 
     def setDatasetControlsStatus(self, enabled=True):
         self.ds_title_edit.setEnabled(enabled)
