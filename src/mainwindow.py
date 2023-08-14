@@ -1,6 +1,7 @@
 # PyQt5 modules
 from math import inf
-from PyQt5.QtWidgets import QMainWindow, QListWidgetItem, QColorDialog, QFileDialog, QDialog, QStyle
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QListWidgetItem, QColorDialog, QFileDialog, QDialog, QStyle, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
 
 # Project modules
@@ -181,6 +182,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.prevFilterType = Filter.LOW_PASS
         self.compareapprox_cb.setCurrentIndexes([])
+
+        # self.dl_relevant_t.setRowCount(5)
+        # self.dl_relevant_t.setColumnCount(2)
+        # self.dl_relevant_t.horizontalHeader().hide()
+        # self.dl_relevant_t.verticalHeader().hide()
+        #self.dl_relevant_t.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.dl_relevant_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        item = QTableWidgetItem('hola')
+        item2 = QTableWidgetItem('hola')
+        self.dl_relevant_t.setItem(1,1,item)
+        self.dl_relevant_t.setItem(0,0,item2)
 
     def addDataset(self, ds):
         qlwt = QListWidgetItem()
@@ -888,6 +900,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print('x = ', self.cursores1[1][0])
             print('y = ', self.cursores1[1][1])
             self.updatePlots()
+
+            #Creo que aca iría el llamado a un updateTable()
 
     def setDatasetControlsStatus(self, enabled=True):
         self.ds_title_edit.setEnabled(enabled)
