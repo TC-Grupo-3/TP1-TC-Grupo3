@@ -109,8 +109,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_savgol_wlen.valueChanged.connect(self.updateSelectedDataline)
         self.dl_savgol_ord.valueChanged.connect(self.updateSelectedDataline)
         self.dl_hide_btn.clicked.connect(self.hideFunction)
-        self.dl_cursor_btn.clicked.connect(self.createCursor)
-
+        self.dl_cursor_cb.activated.connect(self.createCursor)
+        self.dl_c1_chb.stateChanged.connect(self.showCursor)
+        self.dl_c2_chb.stateChanged.connect(self.showCursor)
+        
         self.dl_color_pickerbtn.clicked.connect(self.openColorPicker)
 
         self.respd = ResponseDialog()
@@ -142,17 +144,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             [ self.plot_3 ],
             [ self.plot_4_1, self.plot_4_2 ],
             [ self.plot_5 ],
-        ]
+        ]  
 
-        #Cursores
-        self.cursor1 = Cursor(self.plot_1.canvas.ax, useblit=True, horizOn=True, vertOn=True, color='red', linewidth=0.6, linestyle='dashed')
-        self.cursor1.connect_event('motion_notify_event', self.on_move)
-        self.cursor1_hline, = self.plot_1.canvas.ax.plot([],[], linestyle='dashed', color='r', linewidth=0.6)
-        self.cursor1_vline, = self.plot_1.canvas.ax.plot([],[], linestyle='dashed', color='r', linewidth=0.6)
-        self.cursor1 = None
-        self.cursor1_left = 2
         self.cursor1_coords = [0, 0]
-        self.cursores1 = [[0, 0], [0, 0]]  
+        self.cursores1 = [[0, 0], [0, 0]]
 
         self.new_filter_btn.clicked.connect(self.addFilter)
         self.chg_filter_btn.clicked.connect(self.changeSelectedFilter)
@@ -860,41 +855,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.selected_dataline_data.alpha = 0
         self.updatePlots()
+    
+    def showCursor(self):
+        self.updatePlots()
 
     def createCursor(self): 
-        if self.cursor1_left==2:
-            dl_canvas = self.getPlotFromIndex(self.selected_dataline_data.plots).canvas
+        if self.dl_cursor_cb.currentText() != 'None':
+            dl_canvas = self.getPlotFromIndex(self.selected_dataline_data.plots).canvas     #TODO que pasa cuando creamos cursor y no hay una linea
             dl_canvas.mpl_connect('button_press_event', self.onClick)
-            # TODO llamar a funcion cursorClick
-            self.cursor1_left = 1
-        elif self.cursor1_left==1:
-            # TODO llamar a funcion cursorClick
-            self.cursor1_left = 0
 
-            #TODO ver wue pasa con este flag cuando se cambia de pestaña   
-
+            #TODO ver que pasa con este flag cuando se cambia de pestaña  
+            
     def onClick(self, event):
-        self.updatePlots()
-        #if event.inaxes == ax:
-        #    x, y = event.xdata, event.ydata  
-    
-    def on_move(self, event):
-        if self.cursor1_left<2:
+        if(self.dl_cursor_cb.currentText() != 'None'):
+            x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
+                                                            self.selected_dataline_data.ysource,
+                                                            self.selected_dataline_data.casenum)
+            self.cursor1_coords[0] = event.xdata
+            self.cursor1_coords[1] = y[int(np.where(x == closestNumber(x, event.xdata))[0])]
             dl_canvas = self.getPlotFromIndex(self.selected_dataline_data.plots).canvas
             if event.inaxes == dl_canvas.ax:
-                x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
-                                                                self.selected_dataline_data.ysource,
-                                                                self.selected_dataline_data.casenum)
-                self.cursor1_coords[0] = event.xdata
-                self.cursor1_coords[1] = y[int(np.where(x == closestNumber(x, event.xdata))[0])]
-
-    def updateCursor(self, x, y, canvas):
-        self.cursor1_hline.set_data([],[])
-        self.cursor1_vline.set_data([],[])
-        canvas.draw()
-        self.cursor1_hline.set_data(x, np.full(len(x), self.cursor1_coords[1]))
-        self.cursor1_vline.set_data(np.full(len(y), self.cursor1_coords[0]), y)  
-        canvas.draw()
+                if self.dl_cursor_cb.currentText() == 'Cursor 1' and self.dl_cursor_cb.currentText() != 'Cursor 2':
+                    self.cursores1[0] = [self.cursor1_coords[0], self.cursor1_coords[1]]
+                    #print(self.dl_cursor_cb.currentText())
+                elif self.dl_cursor_cb.currentText() == 'Cursor 2' and self.dl_cursor_cb.currentText() != 'Cursor 1':
+                    self.cursores1[1] = [self.cursor1_coords[0], self.cursor1_coords[1]]
+                    # print(self.dl_cursor_cb.currentText())
+            print('Cursor 1:')
+            print('x = ', self.cursores1[0][0])
+            print('y = ', self.cursores1[0][1])
+            print('Cursor 2:')
+            print('x = ', self.cursores1[1][0])
+            print('y = ', self.cursores1[1][1])
+            self.updatePlots()
 
     def setDatasetControlsStatus(self, enabled=True):
         self.ds_title_edit.setEnabled(enabled)
@@ -966,8 +959,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                         x, y = ds.get_datapoints(dl.xsource, dl.ysource, dl.casenum)
 
-                        if self.cursor1_left<2:
-                            self.updateCursor(x, y, dl_canvas)
+                        if (self.dl_c1_chb.isChecked()):
+                            canvas.ax.plot(x, np.full(len(x), self.cursores1[0][1]), color='r', linestyle='dashed')
+                            canvas.ax.plot(np.full(len(y), self.cursores1[0][0]), y, color='r', linestyle='dashed')
+                        if (self.dl_c2_chb.isChecked()):
+                            canvas.ax.plot(x, np.full(len(x), self.cursores1[1][1]), color='b', linestyle='dashed')
+                            canvas.ax.plot(np.full(len(y), self.cursores1[1][0]), y, color='b', linestyle='dashed')
 
                         if(dl.transform == 1):
                             y = np.abs(y)
@@ -1013,6 +1010,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                 plotlist.append(line)
                         except ValueError:
                             self.statusbar.showMessage('Wrong data source matching', 2000)
+
             if(self.plt_legendpos.currentText() == 'None'):
                 canvas.ax.get_legend().remove()
             else:
