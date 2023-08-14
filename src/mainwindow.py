@@ -52,7 +52,7 @@ W_TO_F = 1/F_TO_W
 SING_B_TO_F = W_TO_F if SHOW_PZ_IN_HZ else 1
 SING_F_TO_B = F_TO_W if SHOW_PZ_IN_HZ else 1
 
-xc1Row, yc1Row, xc2Row, yc2Row, ysubsRow, xsubsRow, xinvRow = {0,1,2,3,4,5,6}
+xc1Row, yc1Row, xc2Row, yc2Row, ysubsRow, xsubsRow, xinvRow, slopeRow = {0,1,2,3,4,5,6,7}
 cursorName, cursorValue = {0,1}
 
 def stage_to_str(stage):
@@ -219,6 +219,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Xsubs = QTableWidgetItem('T')
         self.Ysubs = QTableWidgetItem('A')
         self.Xinv = QTableWidgetItem('1/T')
+        self.slope = QTableWidgetItem('Slope')
         self.XC1_value = QTableWidgetItem('0')
         self.YC1_value = QTableWidgetItem('0')
         self.XC2_value = QTableWidgetItem('0')
@@ -226,6 +227,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Xsubs_value = QTableWidgetItem('0')
         self.Ysubs_value = QTableWidgetItem('0')
         self.Xinv_value = QTableWidgetItem('0')
+        self.slope_value = QTableWidgetItem('0')
         self.dl_relevant_t.setItem(xc1Row,cursorName, self.XC1)
         self.dl_relevant_t.setItem(yc1Row,cursorName, self.YC1)
         self.dl_relevant_t.setItem(xc2Row,cursorName, self.XC2)
@@ -233,6 +235,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_relevant_t.setItem(ysubsRow,cursorName, self.Ysubs)
         self.dl_relevant_t.setItem(xsubsRow,cursorName, self.Xsubs)
         self.dl_relevant_t.setItem(xinvRow,cursorName, self.Xinv)
+        self.dl_relevant_t.setItem(slopeRow,cursorName, self.slope)
         self.dl_relevant_t.setItem(xc1Row,cursorValue, self.XC1_value)
         self.dl_relevant_t.setItem(yc1Row,cursorValue, self.YC1_value)
         self.dl_relevant_t.setItem(xc2Row,cursorValue, self.XC2_value)
@@ -240,6 +243,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_relevant_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
         self.dl_relevant_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
         self.dl_relevant_t.setItem(xinvRow,cursorValue, self.Xinv_value)
+        self.dl_relevant_t.setItem(slopeRow,cursorValue, self.slope_value)
 
     def removeDataset(self, i):
         #Saco los datalines
@@ -927,6 +931,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.Xinv_value = QTableWidgetItem(str('%.6f'%(1/(self.cursores1[1][0] - self.cursores1[0][0]))))
         else:
             self.Xinv_value = QTableWidgetItem('inf')
+        self.slope_value =  QTableWidgetItem(str('%.6f'%((self.cursores1[1][1] - self.cursores1[0][1])/
+                                                         (self.cursores1[1][0] - self.cursores1[0][0]))))
         self.dl_relevant_t.setItem(xc1Row,cursorValue, self.XC1_value)
         self.dl_relevant_t.setItem(yc1Row,cursorValue, self.YC1_value)
         self.dl_relevant_t.setItem(xc2Row,cursorValue, self.XC2_value)
@@ -934,29 +940,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_relevant_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
         self.dl_relevant_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
         self.dl_relevant_t.setItem(xinvRow, cursorValue, self.Xinv_value)
+        self.dl_relevant_t.setItem(slopeRow, cursorValue, self.slope_value)
 
     def onClick(self, event):
         if(self.dl_cursor_cb.currentText() != 'None'):
+            xScale = self.selected_dataline_data.xscale
+            xOffset = self.selected_dataline_data.xoffset
             x, y = self.selected_dataset_data.get_datapoints(self.selected_dataline_data.xsource,
                                                             self.selected_dataline_data.ysource,
                                                             self.selected_dataline_data.casenum)
+            
             self.cursor1_coords[0] = event.xdata
-            self.cursor1_coords[1] = y[int(np.where(x == closestNumber(x, event.xdata))[0])]
+            self.cursor1_coords[1] = y[int(np.where(x * xScale + xOffset == closestNumber(x * xScale + xOffset, event.xdata))[0])]
             dl_canvas = self.getPlotFromIndex(self.selected_dataline_data.plots).canvas
             if event.inaxes == dl_canvas.ax:
                 if self.dl_cursor_cb.currentText() == 'Cursor 1' and self.dl_cursor_cb.currentText() != 'Cursor 2':
                     self.cursores1[0] = [self.cursor1_coords[0], self.cursor1_coords[1]]
-                    #print(self.dl_cursor_cb.currentText())
                 elif self.dl_cursor_cb.currentText() == 'Cursor 2' and self.dl_cursor_cb.currentText() != 'Cursor 1':
                     self.cursores1[1] = [self.cursor1_coords[0], self.cursor1_coords[1]]
-                    
-                    # print(self.dl_cursor_cb.currentText())
-            print('Cursor 1:')
-            print('x = ', self.cursores1[0][0])
-            print('y = ', self.cursores1[0][1])
-            print('Cursor 2:')
-            print('x = ', self.cursores1[1][0])
-            print('y = ', self.cursores1[1][1])
             self.updateRelevant()
             self.updatePlots()
 
@@ -1030,12 +1031,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                         x, y = ds.get_datapoints(dl.xsource, dl.ysource, dl.casenum)
 
-                        if (self.dl_c1_chb.isChecked()):
-                            canvas.ax.plot(x, np.full(len(x), self.cursores1[0][1]), color='r', linestyle='dashed')
-                            canvas.ax.plot(np.full(len(y), self.cursores1[0][0]), y, color='r', linestyle='dashed')
-                        if (self.dl_c2_chb.isChecked()):
-                            canvas.ax.plot(x, np.full(len(x), self.cursores1[1][1]), color='b', linestyle='dashed')
-                            canvas.ax.plot(np.full(len(y), self.cursores1[1][0]), y, color='b', linestyle='dashed')
+                        
 
                         if(dl.transform == 1):
                             y = np.abs(y)
@@ -1064,6 +1060,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                 y = y if savgolw <= savgolo else savgol_filter(y, savgolw, savgolo)
                         except ValueError:
                             pass
+
+                        if (self.dl_c1_chb.isChecked()):
+                            canvas.ax.plot(x * dl.xscale + dl.xoffset, np.full(len(x), self.cursores1[0][1]), color='r', linestyle='dashed')
+                            canvas.ax.plot(np.full(len(y), self.cursores1[0][0]), y * dl.yscale + dl.yoffset, color='r', linestyle='dashed')
+                        if (self.dl_c2_chb.isChecked()):
+                            canvas.ax.plot(x * dl.xscale + dl.xoffset, np.full(len(x), self.cursores1[1][1]), color='b', linestyle='dashed')
+                            canvas.ax.plot(np.full(len(y), self.cursores1[1][0]), y * dl.yscale + dl.yoffset, color='b', linestyle='dashed')
 
                         try:
                             line, = canvas.ax.plot(
