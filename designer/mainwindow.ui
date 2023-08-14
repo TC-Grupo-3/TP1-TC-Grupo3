@@ -42,7 +42,7 @@
        <attribute name="title">
         <string>Plotting</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_13" columnstretch="0,0,0">
+       <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
          <widget class="QGroupBox" name="groupBox">
           <property name="minimumSize">
@@ -568,7 +568,7 @@
             <string>Plot 1</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0">
+            <item row="0" column="1">
              <widget class="MplWidget" name="plot_1" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -644,7 +644,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>140</width>
+            <width>160</width>
             <height>0</height>
            </size>
           </property>
@@ -657,8 +657,8 @@
           <property name="title">
            <string>Dataline handling</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0">
-           <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
             <widget class="QListWidget" name="dataline_list">
              <property name="maximumSize">
               <size>
@@ -668,796 +668,685 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QScrollArea" name="scrollArea_2">
-             <property name="enabled">
-              <bool>true</bool>
+           <item>
+            <widget class="QLabel" name="label_53">
+             <property name="text">
+              <string>Options</string>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTabWidget" name="tabWidget_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Plain</enum>
+             <property name="minimumSize">
+              <size>
+               <width>140</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="lineWidth">
-              <number>0</number>
+             <property name="currentIndex">
+              <number>1</number>
              </property>
-             <property name="widgetResizable">
-              <bool>true</bool>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
              </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents_2">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>-340</y>
-                <width>204</width>
-                <height>579</height>
-               </rect>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_15">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
+             <widget class="QWidget" name="tab_29">
+              <attribute name="title">
+               <string>Info</string>
+              </attribute>
+              <layout class="QFormLayout" name="formLayout">
                <item row="0" column="0">
-                <widget class="QGroupBox" name="dataline_gb">
-                 <property name="enabled">
-                  <bool>true</bool>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Name</string>
                  </property>
-                 <property name="maximumSize">
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="dl_name_edit"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>Render</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="dl_render_cb">
+                 <item>
+                  <property name="text">
+                   <string>Plot 1</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plot 2.1</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plot 2.2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plot 3</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plot 4.1</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plot 4.2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plot 5</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>Transform</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="dl_transform_cb">
+                 <item>
+                  <property name="text">
+                   <string>None</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>|.|</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arg(.)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>unwrap Arg(.)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>20log(.)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>20log(|.|)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>unwrap(.)</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_27">
+              <attribute name="title">
+               <string>Axis</string>
+              </attribute>
+              <layout class="QFormLayout" name="formLayout_3">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>X data</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="dl_xdata_cb"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string>Y data</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="dl_ydata_cb"/>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>X scale</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="ScienDSpinBox" name="dl_xscale_sb">
+                 <property name="value">
+                  <double>1.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>X offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="ScienDSpinBox" name="dl_xoffset_sb">
+                 <property name="value">
+                  <double>0.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>Y scale</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="ScienDSpinBox" name="dl_yscale_sb">
+                 <property name="value">
+                  <double>1.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_23">
+                 <property name="text">
+                  <string>Y offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="ScienDSpinBox" name="dl_yoffset_sb">
+                 <property name="value">
+                  <double>0.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_28">
+              <attribute name="title">
+               <string>View</string>
+              </attribute>
+              <layout class="QFormLayout" name="formLayout_10">
+               <item row="0" column="0">
+                <widget class="QLabel" name="dl_color_label">
+                 <property name="text">
+                  <string>Color</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>Line style</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="dl_style_cb">
+                 <property name="currentText">
+                  <string>None</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>None</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Solid</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Dashed</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Dash-dot</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Dotted</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_11">
+                 <property name="text">
+                  <string>Line width</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QDoubleSpinBox" name="dl_linewidth_sb">
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.100000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.100000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>Dot style</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QComboBox" name="dl_marker_cb">
+                 <property name="currentText">
+                  <string>None</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>None</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Point</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Pixel</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Circle</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Triangle down</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Triangle up</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Triangle left</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Triangle right</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tri down</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tri up</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tri left</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tri right</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Octagon</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Square</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Pentagon</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plus (filled)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Star</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Hexagon</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Hexagon alt.</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Plus</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>x</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>x (filled)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Diamond</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Diamond (thin)</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Vline</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Hline</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>Dot size</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QDoubleSpinBox" name="dl_markersize_sb">
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.100000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>20.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.100000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>Sav-Gol wlen</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QDoubleSpinBox" name="dl_savgol_wlen">
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="value">
+                  <double>1.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>Sav-Gol ord</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QDoubleSpinBox" name="dl_savgol_ord">
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="value">
+                  <double>1.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0">
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetNoConstraint</enum>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="dl_color_edit_3">
+                   <property name="text">
+                    <string>#151515</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="dl_color_pickerbtn_3">
+                   <property name="text">
+                    <string>Pick</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_30">
+              <attribute name="title">
+               <string>Cursors</string>
+              </attribute>
+              <layout class="QFormLayout" name="formLayout_4">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_34">
+                 <property name="text">
+                  <string>Cursor</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="dl_cursor_cb">
+                 <property name="currentText">
+                  <string>None</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>None</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Cursor 1</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Cursor 2</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="dl_c1_chb">
+                 <property name="text">
+                  <string>Show C1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="dl_c2_chb">
+                 <property name="text">
+                  <string>Show C2</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
                   <size>
-                   <width>180</width>
-                   <height>16777215</height>
+                   <width>40</width>
+                   <height>20</height>
                   </size>
                  </property>
-                 <property name="title">
-                  <string>Selected dataline details</string>
+                </spacer>
+               </item>
+               <item row="2" column="1">
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0">
-                  <item row="0" column="1">
-                   <widget class="QLineEdit" name="dl_name_edit"/>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_22">
-                    <property name="text">
-                     <string>Transform</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="19" column="0">
-                   <widget class="QLabel" name="label_7">
-                    <property name="text">
-                     <string>Sav-Gol wlen</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="9" column="1">
-                   <widget class="ScienDSpinBox" name="dl_yscale_sb">
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="15" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_linewidth_sb">
-                    <property name="decimals">
-                     <number>1</number>
-                    </property>
-                    <property name="minimum">
-                     <double>0.100000000000000</double>
-                    </property>
-                    <property name="singleStep">
-                     <double>0.100000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <spacer name="verticalSpacer">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="20" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_savgol_ord">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::NoButtons</enum>
-                    </property>
-                    <property name="decimals">
-                     <number>0</number>
-                    </property>
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="19" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_savgol_wlen">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::NoButtons</enum>
-                    </property>
-                    <property name="decimals">
-                     <number>0</number>
-                    </property>
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="16" column="1">
-                   <widget class="QComboBox" name="dl_marker_cb">
-                    <property name="currentText">
-                     <string>None</string>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>None</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Point</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Pixel</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Circle</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Triangle down</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Triangle up</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Triangle left</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Triangle right</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Tri down</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Tri up</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Tri left</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Tri right</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Octagon</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Square</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Pentagon</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plus (filled)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Star</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Hexagon</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Hexagon alt.</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plus</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>x</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>x (filled)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Diamond</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Diamond (thin)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Vline</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Hline</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="16" column="0">
-                   <widget class="QLabel" name="label_9">
-                    <property name="text">
-                     <string>Dot style</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="0">
-                   <widget class="QLabel" name="label_16">
-                    <property name="text">
-                     <string>X offset</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QLabel" name="label">
-                    <property name="text">
-                     <string>X data</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="22" column="0">
-                   <widget class="QLabel" name="label_34">
-                    <property name="text">
-                     <string>Cursor</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="20" column="0">
-                   <widget class="QLabel" name="label_12">
-                    <property name="text">
-                     <string>Sav-Gol ord</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="1">
-                   <widget class="QComboBox" name="dl_ydata_cb"/>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QComboBox" name="dl_transform_cb">
-                    <item>
-                     <property name="text">
-                      <string>None</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>|.|</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Arg(.)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>unwrap Arg(.)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>20log(.)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>20log(|.|)</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>unwrap(.)</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="15" column="0">
-                   <widget class="QLabel" name="label_11">
-                    <property name="text">
-                     <string>Line width</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="17" column="1">
-                   <widget class="QDoubleSpinBox" name="dl_markersize_sb">
-                    <property name="decimals">
-                     <number>1</number>
-                    </property>
-                    <property name="minimum">
-                     <double>0.100000000000000</double>
-                    </property>
-                    <property name="maximum">
-                     <double>20.000000000000000</double>
-                    </property>
-                    <property name="singleStep">
-                     <double>0.100000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="9" column="0">
-                   <widget class="QLabel" name="label_6">
-                    <property name="text">
-                     <string>Y scale</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="11" column="1">
-                   <spacer name="verticalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="14" column="0">
-                   <widget class="QLabel" name="label_8">
-                    <property name="text">
-                     <string>Line style</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="1">
-                   <widget class="ScienDSpinBox" name="dl_xscale_sb">
-                    <property name="value">
-                     <double>1.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="26" column="0" colspan="2">
-                   <widget class="QPushButton" name="dl_hide_btn">
-                    <property name="text">
-                     <string>Hide / Show line</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="0">
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string>X scale</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="18" column="1">
-                   <spacer name="verticalSpacer_4">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="10" column="1">
-                   <widget class="ScienDSpinBox" name="dl_yoffset_sb">
-                    <property name="value">
-                     <double>0.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="17" column="0">
-                   <widget class="QLabel" name="label_15">
-                    <property name="text">
-                     <string>Dot size</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="14" column="1">
-                   <widget class="QComboBox" name="dl_style_cb">
-                    <property name="currentText">
-                     <string>None</string>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>None</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Solid</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Dashed</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Dash-dot</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Dotted</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="24" column="0" colspan="2">
-                   <widget class="QCheckBox" name="dl_c2_chb">
-                    <property name="text">
-                     <string>Show Cursor 2</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QComboBox" name="dl_render_cb">
-                    <item>
-                     <property name="text">
-                      <string>Plot 1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 2.1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 2.2</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 3</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 4.1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 4.2</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Plot 5</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="22" column="1">
-                   <widget class="QComboBox" name="dl_cursor_cb">
-                    <property name="currentText">
-                     <string>None</string>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>None</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Cursor 1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Cursor 2</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="8" column="0">
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>Y data</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="12" column="1">
-                   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
-                    <property name="sizeConstraint">
-                     <enum>QLayout::SetNoConstraint</enum>
-                    </property>
-                    <item>
-                     <widget class="QLineEdit" name="dl_color_edit">
-                      <property name="text">
-                       <string>#151515</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QToolButton" name="dl_color_pickerbtn">
-                      <property name="text">
-                       <string>Pick</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_10">
-                    <property name="text">
-                     <string>Render</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="1">
-                   <widget class="ScienDSpinBox" name="dl_xoffset_sb">
-                    <property name="value">
-                     <double>0.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_4">
-                    <property name="text">
-                     <string>Name</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="10" column="0">
-                   <widget class="QLabel" name="label_23">
-                    <property name="text">
-                     <string>Y offset</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1">
-                   <widget class="QComboBox" name="dl_xdata_cb"/>
-                  </item>
-                  <item row="12" column="0">
-                   <widget class="QLabel" name="dl_color_label">
-                    <property name="text">
-                     <string>Color</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="27" column="0" colspan="2">
-                   <widget class="QPushButton" name="dl_remove_btn">
-                    <property name="text">
-                     <string>Remove</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="23" column="0" colspan="2">
-                   <widget class="QCheckBox" name="dl_c1_chb">
-                    <property name="text">
-                     <string>Show Cursor 1</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                 <zorder>label_10</zorder>
-                 <zorder>label_12</zorder>
-                 <zorder>dl_savgol_ord</zorder>
-                 <zorder>dl_yoffset_sb</zorder>
-                 <zorder>dl_color_label</zorder>
-                 <zorder>label_16</zorder>
-                 <zorder>dl_marker_cb</zorder>
-                 <zorder>label_5</zorder>
-                 <zorder>label_7</zorder>
-                 <zorder>label_23</zorder>
-                 <zorder>dl_linewidth_sb</zorder>
-                 <zorder>label_15</zorder>
-                 <zorder>dl_xscale_sb</zorder>
-                 <zorder>dl_style_cb</zorder>
-                 <zorder>dl_ydata_cb</zorder>
-                 <zorder>dl_remove_btn</zorder>
-                 <zorder>label_22</zorder>
-                 <zorder>label_9</zorder>
-                 <zorder>dl_xdata_cb</zorder>
-                 <zorder>label_11</zorder>
-                 <zorder>dl_xoffset_sb</zorder>
-                 <zorder>label_6</zorder>
-                 <zorder>dl_name_edit</zorder>
-                 <zorder>label</zorder>
-                 <zorder>dl_markersize_sb</zorder>
-                 <zorder>label_8</zorder>
-                 <zorder>dl_savgol_wlen</zorder>
-                 <zorder>label_2</zorder>
-                 <zorder>dl_yscale_sb</zorder>
-                 <zorder>label_4</zorder>
-                 <zorder>dl_render_cb</zorder>
-                 <zorder>dl_transform_cb</zorder>
-                 <zorder>dl_hide_btn</zorder>
-                 <zorder>dl_cursor_cb</zorder>
-                 <zorder>label_34</zorder>
-                 <zorder>dl_c2_chb</zorder>
-                 <zorder>dl_c1_chb</zorder>
-                </widget>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QScrollArea" name="scrollArea_5">
-             <property name="enabled">
-              <bool>true</bool>
+           <item>
+            <widget class="QPushButton" name="dl_hide_btn">
+             <property name="text">
+              <string>Hide / Show line</string>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Plain</enum>
-             </property>
-             <property name="lineWidth">
-              <number>0</number>
-             </property>
-             <property name="widgetResizable">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents_5">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>217</width>
-                <height>215</height>
-               </rect>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_37">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QGroupBox" name="dataline_gb_2">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>180</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="title">
-                  <string>Relevant Data</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_38" rowstretch="0,0,0,0,0,0,0" columnstretch="0">
-                  <item row="6" column="0">
-                   <widget class="QTableWidget" name="dl_relevant_t">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>160</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>160</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="sizeAdjustPolicy">
-                     <enum>QAbstractScrollArea::AdjustToContents</enum>
-                    </property>
-                    <property name="editTriggers">
-                     <set>QAbstractItemView::NoEditTriggers</set>
-                    </property>
-                    <property name="rowCount">
-                     <number>8</number>
-                    </property>
-                    <property name="columnCount">
-                     <number>2</number>
-                    </property>
-                    <attribute name="horizontalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="verticalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <column/>
-                    <column/>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item>
+            <widget class="QPushButton" name="dl_remove_btn">
+             <property name="text">
+              <string>Remove line</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_55">
+             <property name="text">
+              <string>Relevant Cursors Data</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="dl_cursor_t">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::AdjustToContents</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+             <property name="rowCount">
+              <number>8</number>
+             </property>
+             <property name="columnCount">
+              <number>2</number>
+             </property>
+             <attribute name="horizontalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="horizontalHeaderHighlightSections">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderHighlightSections">
+              <bool>false</bool>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <column/>
+             <column/>
+            </widget>
+           </item>
+           <item>
             <widget class="QPushButton" name="resp_btn">
              <property name="enabled">
               <bool>false</bool>
@@ -2796,25 +2685,6 @@
   <tabstop>plt_marginy</tabstop>
   <tabstop>tabbing_plots</tabstop>
   <tabstop>dataline_list</tabstop>
-  <tabstop>scrollArea_2</tabstop>
-  <tabstop>dl_name_edit</tabstop>
-  <tabstop>dl_render_cb</tabstop>
-  <tabstop>dl_transform_cb</tabstop>
-  <tabstop>dl_xdata_cb</tabstop>
-  <tabstop>dl_xscale_sb</tabstop>
-  <tabstop>dl_xoffset_sb</tabstop>
-  <tabstop>dl_ydata_cb</tabstop>
-  <tabstop>dl_yscale_sb</tabstop>
-  <tabstop>dl_yoffset_sb</tabstop>
-  <tabstop>dl_color_edit</tabstop>
-  <tabstop>dl_color_pickerbtn</tabstop>
-  <tabstop>dl_style_cb</tabstop>
-  <tabstop>dl_linewidth_sb</tabstop>
-  <tabstop>dl_marker_cb</tabstop>
-  <tabstop>dl_markersize_sb</tabstop>
-  <tabstop>dl_savgol_wlen</tabstop>
-  <tabstop>dl_savgol_ord</tabstop>
-  <tabstop>dl_remove_btn</tabstop>
   <tabstop>resp_btn</tabstop>
   <tabstop>scrollArea_3</tabstop>
   <tabstop>selfil_cb</tabstop>

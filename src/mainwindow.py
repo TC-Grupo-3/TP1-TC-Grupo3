@@ -104,7 +104,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_ydata_cb.activated.connect(self.updateSelectedDataline)
         self.dl_yscale_sb.valueChanged.connect(self.updateSelectedDataline)
         self.dl_yoffset_sb.valueChanged.connect(self.updateSelectedDataline)
-        self.dl_color_edit.textEdited.connect(self.updateSelectedDataline)
+        self.dl_color_edit_3.textEdited.connect(self.updateSelectedDataline)
         self.dl_style_cb.activated.connect(self.updateSelectedDataline)
         self.dl_linewidth_sb.valueChanged.connect(self.updateSelectedDataline)
         self.dl_marker_cb.activated.connect(self.updateSelectedDataline)
@@ -117,7 +117,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_c1_chb.stateChanged.connect(self.showCursor)
         self.dl_c2_chb.stateChanged.connect(self.showCursor)
         
-        self.dl_color_pickerbtn.clicked.connect(self.openColorPicker)
+        self.dl_color_pickerbtn_3.clicked.connect(self.openColorPicker)
 
         self.respd = ResponseDialog()
         self.resp_btn.clicked.connect(self.openResponseDialog)
@@ -192,8 +192,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.dl_relevant_t.verticalHeader().hide()
         #self.dl_relevant_t.setEditTriggers(QTableWidget.NoEditTriggers)
         # self.dl_relevant_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        self.initRelevantTable()
-
+        self.initCursorTable()
 
     def addDataset(self, ds):
         qlwt = QListWidgetItem()
@@ -205,13 +204,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dataset_list.setCurrentRow(self.dataset_list.count() - 1)
 
     
-
     #para cambiar el valor de una celda se le debe dar un valor al item que contiene esa celda, y llamar a setItem para que sobreescriba
-    def initRelevantTable(self): 
-        self.dl_relevant_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        self.dl_relevant_t.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-    #    self.dl_relevant_t.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-    #    self.dl_relevant_t.horizontalHeader().setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+    def initCursorTable(self): 
+        self.dl_cursor_t.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.dl_cursor_t.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+    #    self.dl_cursor_t.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+    #    self.dl_cursor_t.horizontalHeader().setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
         self.XC1 = QTableWidgetItem('X C1')
         self.YC1 = QTableWidgetItem('Y C1')
         self.XC2 = QTableWidgetItem('X C2')
@@ -228,22 +226,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Ysubs_value = QTableWidgetItem('0')
         self.Xinv_value = QTableWidgetItem('0')
         self.slope_value = QTableWidgetItem('0')
-        self.dl_relevant_t.setItem(xc1Row,cursorName, self.XC1)
-        self.dl_relevant_t.setItem(yc1Row,cursorName, self.YC1)
-        self.dl_relevant_t.setItem(xc2Row,cursorName, self.XC2)
-        self.dl_relevant_t.setItem(yc2Row,cursorName, self.YC2)
-        self.dl_relevant_t.setItem(ysubsRow,cursorName, self.Ysubs)
-        self.dl_relevant_t.setItem(xsubsRow,cursorName, self.Xsubs)
-        self.dl_relevant_t.setItem(xinvRow,cursorName, self.Xinv)
-        self.dl_relevant_t.setItem(slopeRow,cursorName, self.slope)
-        self.dl_relevant_t.setItem(xc1Row,cursorValue, self.XC1_value)
-        self.dl_relevant_t.setItem(yc1Row,cursorValue, self.YC1_value)
-        self.dl_relevant_t.setItem(xc2Row,cursorValue, self.XC2_value)
-        self.dl_relevant_t.setItem(yc2Row,cursorValue, self.YC2_value)
-        self.dl_relevant_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
-        self.dl_relevant_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
-        self.dl_relevant_t.setItem(xinvRow,cursorValue, self.Xinv_value)
-        self.dl_relevant_t.setItem(slopeRow,cursorValue, self.slope_value)
+        self.dl_cursor_t.setItem(xc1Row,cursorName, self.XC1)
+        self.dl_cursor_t.setItem(yc1Row,cursorName, self.YC1)
+        self.dl_cursor_t.setItem(xc2Row,cursorName, self.XC2)
+        self.dl_cursor_t.setItem(yc2Row,cursorName, self.YC2)
+        self.dl_cursor_t.setItem(ysubsRow,cursorName, self.Ysubs)
+        self.dl_cursor_t.setItem(xsubsRow,cursorName, self.Xsubs)
+        self.dl_cursor_t.setItem(xinvRow,cursorName, self.Xinv)
+        self.dl_cursor_t.setItem(slopeRow,cursorName, self.slope)
+        self.dl_cursor_t.setItem(xc1Row,cursorValue, self.XC1_value)
+        self.dl_cursor_t.setItem(yc1Row,cursorValue, self.YC1_value)
+        self.dl_cursor_t.setItem(xc2Row,cursorValue, self.XC2_value)
+        self.dl_cursor_t.setItem(yc2Row,cursorValue, self.YC2_value)
+        self.dl_cursor_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
+        self.dl_cursor_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
+        self.dl_cursor_t.setItem(xinvRow,cursorValue, self.Xinv_value)
+        self.dl_cursor_t.setItem(slopeRow,cursorValue, self.slope_value)
 
     def removeDataset(self, i):
         #Saco los datalines
@@ -847,7 +845,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_ydata_cb.setCurrentText(self.selected_dataline_data.ysource)
         self.dl_yscale_sb.setValue(self.selected_dataline_data.yscale)
         self.dl_yoffset_sb.setValue(self.selected_dataline_data.yoffset)
-        self.dl_color_edit.setText(self.selected_dataline_data.color)
+        self.dl_color_edit_3.setText(self.selected_dataline_data.color)
         self.dl_style_cb.setCurrentText(self.selected_dataline_data.linestyle)
         self.dl_linewidth_sb.setValue(self.selected_dataline_data.linewidth)
         self.dl_marker_cb.setCurrentText(self.selected_dataline_data.markerstyle)
@@ -880,7 +878,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.selected_dataline_data.ysource = self.dl_ydata_cb.currentText()
         self.selected_dataline_data.yscale = self.dl_yscale_sb.value()
         self.selected_dataline_data.yoffset = self.dl_yoffset_sb.value()
-        self.selected_dataline_data.color = self.dl_color_edit.text()
+        self.selected_dataline_data.color = self.dl_color_edit_3.text()
         self.selected_dataline_data.linestyle = self.dl_style_cb.currentText()
         self.selected_dataline_data.linewidth = self.dl_linewidth_sb.value()
         self.selected_dataline_data.markerstyle = self.dl_marker_cb.currentText()
@@ -898,7 +896,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dialog.currentColorChanged.connect(self.updateDatalineColor)
 
     def updateDatalineColor(self, color):
-        self.dl_color_edit.setText(color.name())
+        self.dl_color_edit_3.setText(color.name())
         self.dl_color_label.setStyleSheet(f'background-color: {color.name()}')
         self.selected_dataline_data.color = color.name()
         self.updatePlots()
@@ -920,7 +918,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             #TODO ver que pasa con este flag cuando se cambia de pestaña  
 
-    def updateRelevant(self):
+    def updateCursor(self):
         self.XC1_value = QTableWidgetItem(str('%.6f'%(self.cursores1[0][0])))
         self.YC1_value = QTableWidgetItem(str('%.6f'%(self.cursores1[0][1])))
         self.XC2_value = QTableWidgetItem(str('%.6f'%(self.cursores1[1][0])))
@@ -933,14 +931,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.Xinv_value = QTableWidgetItem('inf')
         self.slope_value =  QTableWidgetItem(str('%.6f'%((self.cursores1[1][1] - self.cursores1[0][1])/
                                                          (self.cursores1[1][0] - self.cursores1[0][0]))))
-        self.dl_relevant_t.setItem(xc1Row,cursorValue, self.XC1_value)
-        self.dl_relevant_t.setItem(yc1Row,cursorValue, self.YC1_value)
-        self.dl_relevant_t.setItem(xc2Row,cursorValue, self.XC2_value)
-        self.dl_relevant_t.setItem(yc2Row,cursorValue, self.YC2_value)
-        self.dl_relevant_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
-        self.dl_relevant_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
-        self.dl_relevant_t.setItem(xinvRow, cursorValue, self.Xinv_value)
-        self.dl_relevant_t.setItem(slopeRow, cursorValue, self.slope_value)
+        self.dl_cursor_t.setItem(xc1Row,cursorValue, self.XC1_value)
+        self.dl_cursor_t.setItem(yc1Row,cursorValue, self.YC1_value)
+        self.dl_cursor_t.setItem(xc2Row,cursorValue, self.XC2_value)
+        self.dl_cursor_t.setItem(yc2Row,cursorValue, self.YC2_value)
+        self.dl_cursor_t.setItem(ysubsRow,cursorValue, self.Ysubs_value)
+        self.dl_cursor_t.setItem(xsubsRow,cursorValue, self.Xsubs_value)
+        self.dl_cursor_t.setItem(xinvRow, cursorValue, self.Xinv_value)
+        self.dl_cursor_t.setItem(slopeRow, cursorValue, self.slope_value)
 
     def onClick(self, event):
         if(self.dl_cursor_cb.currentText() != 'None'):
@@ -958,7 +956,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.cursores1[0] = [self.cursor1_coords[0], self.cursor1_coords[1]]
                 elif self.dl_cursor_cb.currentText() == 'Cursor 2' and self.dl_cursor_cb.currentText() != 'Cursor 1':
                     self.cursores1[1] = [self.cursor1_coords[0], self.cursor1_coords[1]]
-            self.updateRelevant()
+            self.updateCursor()
             self.updatePlots()
 
     def setDatasetControlsStatus(self, enabled=True):
@@ -977,8 +975,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dl_ydata_cb.setEnabled(enabled)
         self.dl_yscale_sb.setEnabled(enabled)
         self.dl_yoffset_sb.setEnabled(enabled)
-        self.dl_color_edit.setEnabled(enabled)
-        self.dl_color_pickerbtn.setEnabled(enabled)
+        self.dl_color_edit_3.setEnabled(enabled)
+        self.dl_color_pickerbtn_3.setEnabled(enabled)
         self.dl_style_cb.setEnabled(enabled)
         self.dl_linewidth_sb.setEnabled(enabled)
         self.dl_marker_cb.setEnabled(enabled)
@@ -1013,6 +1011,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updatePlots(self):
         self.saveFile(True)
         processedCanvas = [x.canvas for x in self.plots_canvases[self.tabbing_plots.currentIndex()]]
+
         for canvas in processedCanvas:
             plotlist = []
             for artist in canvas.ax.lines + canvas.ax.collections:
@@ -1030,8 +1029,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         canvas.ax.title.set_size(self.plt_titlesize_sb.value())
 
                         x, y = ds.get_datapoints(dl.xsource, dl.ysource, dl.casenum)
-
-                        
 
                         if(dl.transform == 1):
                             y = np.abs(y)
