@@ -14,7 +14,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>PlotToolG2</string>
+   <string>PlotToolG3_2023</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="acceptDrops">

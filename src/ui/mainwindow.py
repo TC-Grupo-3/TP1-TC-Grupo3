@@ -1215,7 +1215,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "PlotToolG2"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "PlotToolG3_2023"))
         self.groupBox.setTitle(_translate("MainWindow", "Dataset handling"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Plot options"))
         self.label_25.setText(_translate("MainWindow", "Title font size"))
