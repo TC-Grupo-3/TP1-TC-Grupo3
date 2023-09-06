@@ -12,6 +12,7 @@ class TFDialog(QtWidgets.QDialog, Ui_tf_window):
         self.setupUi(self)
         self.tf = TFunction()
 
+        self.txt = ''
         self.tf_title.textChanged.connect(self.enableTFFunction)
         self.tf_raw.textChanged.connect(self.drawExpression)
         self.check_btn.clicked.connect(self.processTFValues)
@@ -24,6 +25,7 @@ class TFDialog(QtWidgets.QDialog, Ui_tf_window):
 
     def enableTFFunction(self, txt):
         if txt != '':
+            self.txt = txt
             self.tf_raw.setEnabled(True)
 
     def drawExpression(self, txt):
@@ -48,5 +50,6 @@ class TFDialog(QtWidgets.QDialog, Ui_tf_window):
     def processTFValues(self):
         if  self.validateTF():
             self.error_label.clear()
+            self.drawExpression(self.txt)
         else:
             self.error_label.setText("Revise function expression")
