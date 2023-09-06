@@ -1,5 +1,7 @@
 # TP1-TC-Grupo3
 Se trabajó con el código base de la PlotToolG2 correspondiente al repositorio https://github.com/Teoria-de-Circuitos-II/PlotTool-G2.git
+Link al repositorio propio del grupo: https://github.com/TC-Grupo-3/TP1-TC-Grupo3
+
 ## Mejoras agregadas:
 ### Botón "Hide / Show line" 
 Se agregó la posibilidad de esconder una línea seleccionada con el botón "Hide / Show line" y volver a mostrarla, para no tener que eliminar la línea
